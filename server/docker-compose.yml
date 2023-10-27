@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+
+  database:
+    container_name: api-shop-db
+    platform: linux/amd64
+    restart: unless-stopped
+    image: postgres:14.5-alpine
+    environment:
+      - "POSTGRES_DB=${APP_CONFIG_DATABASE_DATABASE}"
+      - "POSTGRES_USER=${APP_CONFIG_DATABASE_USER}"
+      - "POSTGRES_PASSWORD=${APP_CONFIG_DATABASE_PASSWORD}"
+    volumes:
+      - database:/var/lib/postgresql/data/ #using a volume
+      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
+    ports:
+      - "${APP_CONFIG_DATABASE_PORT:-5432}:5432"
+
+volumes:
+  database:

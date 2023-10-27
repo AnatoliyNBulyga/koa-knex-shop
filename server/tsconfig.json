@@ -1,0 +1,18 @@
+{
+  "extends": "@lcdev/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "module": "CommonJS",
+    "target": "es2017",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "declaration": true,
+    "declarationDir": "./dist-types"
+  },
+  "include": ["src/**/*", "src/lib/migrations/.ts"],
+  "exclude": ["node_modules"],
+  "plugins": [],
+}

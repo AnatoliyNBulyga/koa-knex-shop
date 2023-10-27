@@ -1,0 +1,98 @@
+type: object
+additionalProperties: false
+
+required:
+  - app
+  - database
+
+properties:
+  app:
+    $ref: "#/definitions/App"
+  database:
+    $ref: "#/definitions/Database"
+
+definitions:
+  App:
+    type: object
+    required:
+      - baseUrl
+      - port
+    additionalProperties: false
+    properties:
+      baseUrl:
+        type: object
+        description: The base URL for each environment
+        required:
+          - client
+          - api
+        properties:
+          client:
+            type: string
+            description: The Client Base URL
+          api:
+            type: string
+            description: The API Base URL
+      port:
+        type: object
+        description: Port for each environment
+        required:
+          - client
+          - api
+        properties:
+          client:
+            type: number
+            description: Port
+          api:
+            type: number
+            description: Port
+
+  Database:
+    type: object
+    required:
+      - host
+      - port
+      - database
+      - user
+      - password
+      - ssl
+    additionalProperties: false
+    properties:
+      host:
+        description: Hostname of the database server
+        type: string
+      port:
+        description: Port of the database server
+        maximum: 65535
+        minimum: 1
+        type: number
+      database:
+        description: Database name
+        minLength: 1
+        type: string
+      user:
+        description: Database user
+        minLength: 1
+        type: string
+        secret: true
+      password:
+        description: Database password
+        type: string
+        secret: true
+      debug:
+        description: Whether we're in debug mode
+        type: boolean
+      ssl:
+        description: Whether to enable ssl when connecting to database
+        type: boolean
+      serverCa:
+        description: GCP SQL server-ca.pem File
+        type: string
+        secret: true
+      clientKey:
+        description: GCP SQL client-key.pem File
+        type: string
+        secret: true
+      clientCert:
+        description: GCP SQL client-cert.pem File
+        type: string
+        secret: true

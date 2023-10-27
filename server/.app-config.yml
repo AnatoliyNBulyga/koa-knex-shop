@@ -1,0 +1,44 @@
+app:
+  baseUrl:
+    $env:
+      default:
+        client: "http://locahost:3000"
+        api: "http://localhost:5000"
+      dev:
+        client: "http://locahost:3000"
+        api: "http://localhost:5000"
+      staging:
+        client: ""
+        api: ""
+      prod:
+        client: ""
+        api: ""
+  port:
+    $env:
+      default:
+        client: 3000
+        api: 5000
+      dev:
+        client: 3000
+        api: 5000
+      staging:
+        client: 80
+        api: 80
+      prod:
+        client: 433
+        api: 433
+
+database:
+  $env:
+    default:
+      host: localhost
+      port: 5432
+      database: api-shop
+      debug: true
+      ssl: false
+    dev:
+      host: localhost
+      port: 5432
+      database: api-shop
+      debug: true
+      ssl: false
